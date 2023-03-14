@@ -1,5 +1,8 @@
 import * as vscode from "vscode";
 import axios from "axios";
+//load .env file
+require("dotenv").config();
+
 
 export function activate(context: vscode.ExtensionContext) {
   let disposable = vscode.commands.registerCommand(
@@ -42,7 +45,7 @@ async function searchYouTube(query: string): Promise<
           part: "id,snippet",
           type: "video",
           maxResults: 10,
-          key: "AIzaSyBz31S67Too5ho8KXEnasvgI4j1A4wvGAY",
+          key: process.env.YOUTUBE_API_KEY,
         },
       }
     );
