@@ -1,0 +1,66 @@
+{
+  "name": "ytcode",
+  "displayName": "YT Code",
+  "version": "0.0.1",
+  "description": "Watch youtube videos during your coding sessions",
+  "publisher": "Jacopo Mosconi",
+  "author": {
+    "name": "Jacopo Mosconi",
+    "email": "jacomosconi@gmail.com"
+  },
+  "main": "extension.js",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.search",
+        "title": "Search YouTube",
+        "category": "YouTube Player"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "extension.search",
+          "group": "1_search",
+          "when": "editorTextFocus"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "youtubePlayer",
+          "title": "YouTube Player",
+          "icon": "./media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "youtubePlayer": [
+        {
+          "id": "extension",
+          "name": "YouTube Player",
+          "icon": "./media/icon.svg",
+          "when": "extension-view"
+        }
+      ]
+    }
+  },
+  "activationEvents": [
+    "onView:youtubePlayer"
+  ],
+  "scripts": {
+    "build": "tsc -p .",
+    "watch": "tsc -watch -p ."
+  },
+  "devDependencies": {
+    "typescript": "^4.4.4",
+    "@types/vscode": "^1.60.0"
+  }
+}
